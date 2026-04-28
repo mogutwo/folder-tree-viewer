@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folder Tree Viewer - 黏土风格</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="bg-shapes">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🗂️</span>
+                <h1>Folder Tree Viewer</h1>
+            </div>
+            <p class="subtitle">选择一个文件夹，可视化查看它的完整项目结构</p>
+        </header>
+
+        <!-- Upload Area -->
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">📁</div>
+            <h2>选择项目文件夹</h2>
+            <p>点击下方按钮选择你想查看的项目文件夹</p>
+            <label class="clay-btn clay-btn-primary" for="folderInput">
+                <span class="btn-icon">📂</span>
+                选择文件夹
+            </label>
+            <input type="file" id="folderInput" webkitdirectory directory multiple style="display:none">
+            <p class="hint">支持 Chrome / Edge / Firefox 浏览器</p>
+        </div>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar" id="statsBar" style="display:none;">
+            <div class="stat-card">
+                <span class="stat-icon">📁</span>
+                <div class="stat-info">
+                    <span class="stat-value" id="folderCount">0</span>
+                    <span class="stat-label">文件夹</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">📄</span>
+                <div class="stat-info">
+                    <span class="stat-value" id="fileCount">0</span>
+                    <span class="stat-label">文件</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">💾</span>
+                <div class="stat-info">
+                    <span class="stat-value" id="totalSize">0 B</span>
+                    <span class="stat-label">总大小</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <span class="stat-icon">🏷️</span>
+                <div class="stat-info">
+                    <span class="stat-value" id="rootName">-</span>
+                    <span class="stat-label">项目名</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="toolbar" id="toolbar" style="display:none;">
+            <div class="toolbar-left">
+                <button class="clay-btn clay-btn-sm" id="expandAll">
+                    <span>展开全部</span>
+                </button>
+                <button class="clay-btn clay-btn-sm" id="collapseAll">
+                    <span>收起全部</span>
+                </button>
+            </div>
+            <div class="toolbar-right">
+                <div class="search-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="搜索文件或文件夹...">
+                    <button class="clear-btn" id="clearSearch" style="display:none;">✕</button>
+                </div>
+                <button class="clay-btn clay-btn-sm" id="copyTree">
+                    <span>📋 复制树</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Tree Container -->
+        <div class="tree-container" id="treeContainer" style="display:none;">
+            <div class="tree" id="tree"></div>
+        </div>
+
+        <!-- Toast -->
+        <div class="toast" id="toast">已复制到剪贴板!</div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
